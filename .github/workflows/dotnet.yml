@@ -26,6 +26,11 @@ jobs:
       run: dotnet restore SeleniumBasicExercise.sln
     - name: Build
       run: dotnet build SeleniumBasicExercise.sln --no-restore
+    - name: Fix permissions for selenium-manager
+      run: |
+        chmod +x ./TestProject1/bin/Debug/net6.0/selenium-manager/linux/selenium-manager || true
+        chmod +x ./TestProject2/bin/Debug/net6.0/selenium-manager/linux/selenium-manager || true
+        chmod +x ./TestProject3/bin/Debug/net6.0/selenium-manager/linux/selenium-manager || true
     - name: Run TestProject1 tests
       run: dotnet test TestProject1 --no-build --verbosity normal
     - name: Run TestProject2 tests
